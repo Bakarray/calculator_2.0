@@ -44,12 +44,12 @@ main {
 
 .input_display{
     flex: 2;
-    padding: 10%
+    padding: 10px
 }
 
 .result_display{
     flex: 1;
-    padding: 5%
+    padding: 5px
 }
 
 .keys {
@@ -73,7 +73,7 @@ main {
 }
 
 .key:hover {
-    background-color: hsl(44, 23%, 10%)
+    background-color: hsl(44, 94%, 21%)
 }
 
 .key:active {
