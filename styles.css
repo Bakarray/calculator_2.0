@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Orbitron", sans-serif;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 body {
@@ -19,20 +19,21 @@ body {
 main {
     background-color: black;
     color: white;
-    max-width: 20%;
-    min-width: fit-content;
+    width: 100%;
+    max-width: 410px;
+    min-width: 400px;
     min-height: 80vh;
-    padding: 15px;
+    padding: 0.75rem;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.5rem;
     box-shadow: 3px -3px 6px rgb(0, 0, 0);
 }
 
 .display_screen {
     flex: 1;
-    padding: 5px;
+    padding: 0.25rem;
     margin-bottom: auto;
     border-radius: 8px;
     background-color: silver;
@@ -47,28 +48,30 @@ main {
 
 .input_display{
     flex: 2;
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
     white-space: nowrap;
     overflow-x: auto;
+    scrollbar-width: thin;
 }
 
 .result_display{
     flex: 1;
     padding: 5px;
+    font-size: 0.8rem;
     color: rgb(70, 70, 70);
 }
 
 .keys {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    gap: 0.25rem;
     border-radius: 8px;
 }
 
 .key {
-  padding: 20px;
-  font-size: 15px;
+  padding: 1rem;
+  font-size: 1rem;
   text-align: center;
   cursor: pointer;
   outline: none;
@@ -87,4 +90,28 @@ main {
   background-color: hsl(44, 93%, 53%);
   box-shadow: 0 2px #666;
   transform: translateY(1px);
+}
+
+/* Media query for smaller screens < 400px */
+@media screen and (max-width: 400px) { 
+    main {
+        min-width: 300px;
+        padding: 0.5rem;
+        min-height: 65vh;
+    }
+
+    .key {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .input_display {
+        font-size: 1rem;
+        padding: 0.2rem;
+    }
+
+    .result_display {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+    }
 }
