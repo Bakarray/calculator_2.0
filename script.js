@@ -112,7 +112,7 @@ function handleButtonClick(buttonText) {
       displayResult(result);
       // token_list = [result.toString()];
     }
-  } else if (buttonText === "deg") {
+  } else if (["deg", "rad"].includes(buttonText)) {
     angle_mode = angle_mode === "radians" ? "degrees" : "radians";
     angleModeBtnTxt.textContent =
       angleModeBtnTxt.textContent === "deg" ? "rad" : "deg";
