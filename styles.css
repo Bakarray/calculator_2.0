@@ -13,6 +13,8 @@ body {
     justify-content: space-between;
     align-items: center;
     min-height: 100vh;
+    padding: 1rem;
+    font-size: 0.8rem;
 }
 
 main {
@@ -107,11 +109,11 @@ main {
 
     .input_display {
         font-size: 1rem;
-        padding: 0.2rem;
+        padding: 0.1rem;
     }
 
     .result_display {
         font-size: 0.9rem;
-        padding: 0.2rem;
+        padding: 0.1rem;
     }
 }
