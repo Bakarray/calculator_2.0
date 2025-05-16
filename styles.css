@@ -42,13 +42,13 @@ main {
     border: 3px solid hsl(44, 93%, 53%);
     text-align: right;
     color: black;
-    font-weight: bold;
 }
 
 .input_display{
     flex: 2;
     padding: 0.5rem;
     font-size: 1.1rem;
+    font-weight: bold;
     white-space: nowrap;
     overflow-x: auto;
     scrollbar-width: thin;
@@ -57,8 +57,9 @@ main {
 .result_display{
     flex: 1;
     padding: 5px;
-    font-size: 0.8rem;
-    color: rgb(70, 70, 70);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgb(24, 49, 0);
 }
 
 .keys {
