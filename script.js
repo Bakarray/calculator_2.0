@@ -121,9 +121,14 @@ function handleButtonClick(buttonText) {
       token_list.push(current_token);
       current_token = "";
     }
+    token_list.push("factorial");
+  } else if (buttonText === "x⁻¹") {
+    if (current_token !== "") {
+      token_list.push(current_token);
+      current_token = "";
+    }
     token_list.push("reciprocal");
   }
-
   // Todo: implement logic for resize and arc-sin...
 
   updateDisplay();
