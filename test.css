@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Orbitron", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    background-color: black;
+    color: white;
+    width: 100%; /* Fill available space up to max-width */
+    max-width: 400px; /* Fixed maximum width */
+    min-width: 250px; /* Minimum width to prevent collapse */
+    min-height: 80vh;
+    padding: 0.75rem; /* Reduced padding for smaller screens */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 3px -3px 6px rgb(0, 0, 0);
+}
+
+.display_screen {
+    flex: 1;
+    padding: 0.25rem;
+    margin-bottom: auto;
+    border-radius: 8px;
+    background-color: silver;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 3px solid hsl(44, 93%, 53%);
+    text-align: right;
+    color: black;
+    font-weight: bold;
+}
+
+.input_display {
+    flex: 2;
+    padding: 0.5rem;
+    font-size: 1.1rem; /* Slightly smaller, relative unit */
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin; /* For Firefox */
+}
+
+.input_display::-webkit-scrollbar {
+    height: 8px; /* For WebKit browsers */
+}
+
+.input_display::-webkit-scrollbar-thumb {
+    background-color: hsl(44, 93%, 53%);
+    border-radius: 4px;
+}
+
+.result_display {
+    flex: 1;
+    padding: 0.25rem;
+    font-size: 1rem; /* Relative unit */
+    color: rgb(70, 70, 70);
+}
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.25rem;
+    border-radius: 8px;
+}
+
+.key {
+    padding: 0.75rem; /* Reduced padding for better fit */
+    font-size: 0.9rem; /* Relative unit */
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: hsl(0, 2%, 18%);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px hsl(44, 40%, 30%);
+}
+
+.key:hover {
+    background-color: hsl(44, 94%, 21%);
+}
+
+.key:active {
+    background-color: hsl(44, 93%, 53%);
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+}
+
+/* Media query for very small screens (e.g., mobile devices < 300px) */
+@media (max-width: 300px) {
+    main {
+        min-width: 220px; /* Slightly smaller minimum */
+        padding: 0.5rem;
+    }
+
+    .key {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .input_display {
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+
+    .result_display {
+        font-size: 0.9rem;
+        padding: 0.2rem;
+    }
+}

@@ -19,7 +19,7 @@ body {
 main {
     background-color: black;
     color: white;
-    max-width: 75%;
+    max-width: 20%;
     min-width: fit-content;
     min-height: 80vh;
     padding: 15px;
@@ -40,16 +40,23 @@ main {
     flex-direction: column;
     justify-content: space-between;
     border: 3px solid hsl(44, 93%, 53%);
+    text-align: right;
+    color: black;
+    font-weight: bold;
 }
 
 .input_display{
     flex: 2;
-    padding: 10px
+    padding: 10px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .result_display{
     flex: 1;
-    padding: 5px
+    padding: 5px;
+    color: rgb(70, 70, 70);
 }
 
 .keys {

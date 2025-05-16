@@ -7,11 +7,12 @@ let paren_depth = 0;
 // Html element selectors
 const inputDisplay = document.querySelector(".input_display");
 const resultDisplay = document.querySelector(".result_display");
+const angleModeBtnTxt = document.querySelector(".angle_mode");
 
 // Event listeners for button clicks
 document.querySelectorAll(".key").forEach((key) => {
   key.addEventListener("click", () => {
-    const buttonvalue = key.textContent;
+    const buttonText = key.textContent;
     handleButtonClick(buttonText);
   });
 });
@@ -24,7 +25,7 @@ function handleButtonClick(buttonText) {
     if (!current_token.includes(".")) {
       current_token += ".";
     }
-  } else if (["+", "-", "×", "+", "^", "%"].includes(buttonText)) {
+  } else if (["+", "-", "×", "÷", "^", "%"].includes(buttonText)) {
     if (current_token !== "") {
       token_list.push(current_token);
       current_token = "";
@@ -82,7 +83,50 @@ function handleButtonClick(buttonText) {
     } else {
       displayResult("Error: unmatched )");
     }
+  } else if (buttonText === "C") {
+    token_list = [];
+    current_token = "";
+    paren_depth = 0;
+    displayResult("");
+  } else if (buttonText === "⌫") {
+    if (current_token !== "") {
+      current_token = current_token.slice(0, -1);
+    } else if (token_list.length > 0) {
+      let lastToken = token_list.pop();
+      if (lastToken === "(") {
+        paren_depth--;
+      } else if (lastToken === ")") {
+        paren_depth++;
+      }
+    }
+  } else if (buttonText === "=") {
+    if (current_token !== "") {
+      token_list.push(current_token);
+      current_token = "";
+    }
+    if (paren_depth !== 0) {
+      displayResult("Error: unmatched (");
+    } else {
+      let postfix = shunting_yard(token_list);
+      let result = evaluate_postfix(postfix);
+      displayResult(result);
+      // token_list = [result.toString()];
+    }
+  } else if (buttonText === "deg") {
+    angle_mode = angle_mode === "radians" ? "degrees" : "radians";
+    angleModeBtnTxt.textContent =
+      angleModeBtnTxt.textContent === "deg" ? "rad" : "deg";
+  } else if (buttonText === "x!") {
+    if (current_token !== "") {
+      token_list.push(current_token);
+      current_token = "";
+    }
+    token_list.push("reciprocal");
   }
+
+  // Todo: implement logic for resize and arc-sin...
+
+  updateDisplay();
 }
 
 // Use objects to define operators and functions to make it easy to modify and add new ones
@@ -158,7 +202,7 @@ function shunting_yard(token_list) {
   let operator_stack = [];
 
   for (let token of token_list) {
-    if (!isNaN(parseFloat(number))) {
+    if (!isNaN(parseFloat(token))) {
       output_queue.push(token);
     } else if (token in constants) {
       output_queue.push(token);
@@ -262,9 +306,14 @@ function displayResult(value) {
     displayValue = value.toString();
   } else if (typeof value === "string" && value.startsWith("Error")) {
     displayValue = value;
+  } else if (value === "") {
+    displayValue = "";
   } else {
     displayValue = "Error";
   }
 
   resultDisplay.textContent = displayValue;
 }
+
+// Initialize display
+updateDisplay();
